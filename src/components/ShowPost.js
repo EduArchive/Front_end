@@ -20,23 +20,23 @@ import { useParams } from "react-router-dom";
 import { APIURL } from "../App";
 import axios from "axios";
 
-// const post = {
-//   id: "1",
-//   title: "제곧내",
-//   contents: "오늘 휴강인가요?",
-//   repls: [
-//     {
-//       id: "repl1",
-//       contents: "ㅇㅇ",
-//       post: "1",
-//     },
-//     {
-//       id: "repl2",
-//       contents: "yes",
-//       post: "1",
-//     },
-//   ],
-// };
+const post = {
+  id: "1",
+  title: " 정성원 교수님 자료구조 과제",
+  contents: "오늘 휴강인가요?",
+  repls: [
+    {
+      id: "repl1",
+      contents: "ㅇㅇ",
+      post: "1",
+    },
+    {
+      id: "repl2",
+      contents: "yes",
+      post: "1",
+    },
+  ],
+};
 
 const PostAndRepl = React.memo(({ post, postLoading, replLoading, repls, replCount }) => {
   return (
@@ -74,8 +74,8 @@ const PostAndRepl = React.memo(({ post, postLoading, replLoading, repls, replCou
 const ShowPost = () => {
   const params = useParams();
   //   console.log(params);
-  const [postLoading, setPostLoading] = useState(true);
-  const [replLoading, setReplLoading] = useState(true);
+  const [postLoading, setPostLoading] = useState(false);
+  const [replLoading, setReplLoading] = useState(false);
 
   const [input, setInput] = useState("");
 
@@ -95,7 +95,7 @@ const ShowPost = () => {
   };
 
   const getPost = async () => {
-    const url = `${APIURL}/api/posts/${params.postID}`;
+    const url = `http://127.0.0.1:8000/blog/subjects/1/posts`;
 
     try {
       // axios 이용하기!
@@ -114,8 +114,8 @@ const ShowPost = () => {
   const onSubmitRepl = async () => {
     try {
       // 웹 서버 url
-      const url = `${APIURL}/api/repl/`;
-      // 웹 서버에 전송할 데이터
+      const url = `http://127.0.0.1:8000/blog/users/create`;
+      // 웹 서버에 전송할 데이터x
       const body = {
         contents: input, // 입력받은 댓글 input
         post: params.postID, // 댓글을 입력할 post 의 ID

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import styled from "styled-components";
 
 import {
   CursorDiv,
@@ -14,98 +15,101 @@ import {
 } from "../styledComponents";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import { faArrowsRotate, faPenToSquare, faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 import loadingIcon from "../loading.svg";
 import { useNavigate } from "react-router-dom";
 import EachPost from "./EachPost";
 import { APIURL } from "../App";
-import axios from "axios";
 
-axios.defaults.withCredentials = true;
+const dummyPostList = [
+  {
+    id: "1",
+    title: "ㅈㅅㅇ 자료구조 ",
+    contents: "오늘 휴강인가요?",
+    viewCount: 10,
+    author: "자구마스터",
+    date: "2206254",
+    attachedFiles: ["자구보고서.pdf"],
+    assignmentScore: 95,
+    repls: [
+      {
+        id: "repl1",
+        contents: "ㅇㅇ",
+        post: "1",
+      },
+      {
+        id: "repl2",
+        contents: "yes",
+        post: "1",
+      },
+    ],
+  },
+  {
+    id: "2",
+    title: "최준석 자구 과제",
+    contents: "서강 멋사 폼 미쳤다",
+    viewCount: 5,
+    author: "빌 게이츠",
+    date: "230623",
+    attachedFiles: ["20161852.c"],
+    assignmentScore: 85,
+    repls: [
+      {
+        id: "repl3",
+        contents: "ㅆㅇㅈ",
+        post: "2",
+      },
+    ],
+  },
+];
 
-// const postList = [
-//   {
-//     id: "1",
-//     title: "제곧내",
-//     contents: "오늘 휴강인가요?",
-//     repls: [
-//       {
-//         id: "repl1",
-//         contents: "ㅇㅇ",
-//         post: "1",
-//       },
-//       {
-//         id: "repl2",
-//         contents: "yes",
-//         post: "1",
-//       },
-//     ],
-//   },
-//   {
-//     id: "2",
-//     title: "솔직히 멋사 폼 미친거 아님?",
-//     contents: "서강 멋사 폼 미쳤다",
-//     repls: [
-//       {
-//         id: "repl3",
-//         contents: "ㅆㅇㅈ",
-//         post: "2",
-//       },
-//     ],
-//   },
-// ];
+const StyledPostListDiv = styled(PostListDiv)`
+  font-size: 20px;
+  font-family: "Noto Sans KR", sans-serif;
+  padding: 10px; /* 간격 조절을 위한 패딩 값 추가 */
+`;
+
+const StyledTable = styled.table`
+  width: 100%;
+  border-collapse: collapse;
+
+  th,
+  td {
+    padding: 8px; /* 데이터 사이의 패딩 값 설정 */
+    text-align: center;
+    border: 1px solid #ccc;
+  }
+
+  th {
+    font-weight: bold;
+  }
+`;
 
 const ShowPostList = () => {
-  // loading state
-  const [loading, setLoading] = useState(true);
-  // post list
+  const [loading, setLoading] = useState(false);
   const [postList, setPostList] = useState([]);
-
-  // 현재 페이지 번호 ex) 현재 1 페에지 --> page == 1
   const [page, setPage] = useState(1);
-  // 전체 페이지 배열  ex) 2 페이지 까지 있다 --> pages == [1, 2]
   const [pages, setPages] = useState([]);
-
   const navigate = useNavigate();
+
   const goWrite = () => {
     navigate("/write");
   };
 
   const getPostList = () => {
-    // url query string 에 현재 page 값 넘기기!
-    const url = `${APIURL}/api/list/?page=${page}`;
-    const data = { page };
-    axios
-      .get(url, { params: data })
-      .then((res) => {
-        console.log("getPostList response: ", res);
+    const results = dummyPostList;
+    const count = dummyPostList.length;
+    const lastPage = Math.ceil(count / 10);
 
-        // 게시글의 총 개수
-        const count = res.data.count;
-        // 한 페이지 당 10개의 게시글
-        // lastPage 는 마지막 페이지 숫자!
-        // ex) count = 12 -> lastPage = 2
-        const lastPage = Math.ceil(count / 10);
+    const tempPages = [];
+    for (let i = 1; i <= lastPage; i++) {
+      tempPages.push(i);
+    }
 
-        // 전체 페이지 배열을 담을 임시 참조타입(배열) 생성
-        const tempPages = [];
-        for (let i = 1; i <= lastPage; i++) {
-          // 페이지 번호들 담기
-          tempPages.push(i);
-        }
-
-        // 전체 페이지 배열 상태값 갱신
-        setPages(tempPages);
-        // 게시글 목록 상태값 갱신
-        setPostList(res.data.results);
-        // 로딩 상태값 갱신
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.log("get post list err: ", err);
-      });
+    setPages(tempPages);
+    setPostList(results);
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -117,32 +121,49 @@ const ShowPostList = () => {
       <PostSection>
         <PostTitleDiv>
           <FontAwesomeIcon icon={faArrowsRotate} />
-
-          <PostTitle>구매게시판</PostTitle>
-
+          <PostTitle>자료구조 구매게시판</PostTitle>
           <CursorDiv>
             <FontAwesomeIcon onClick={goWrite} icon={faPenToSquare} />
           </CursorDiv>
         </PostTitleDiv>
 
-        <PostListDiv>
+        <StyledPostListDiv>
+          {" "}
+          {/* 스타일링을 적용한 컴포넌트 사용 */}
           {loading ? (
             <LoadingDiv>
               <LoadingImg src={loadingIcon} />
             </LoadingDiv>
           ) : (
-            <ul>
-              {postList.map((post) => (
-                <EachPost key={post.id} title={post.title} postID={post.id} />
-              ))}
-            </ul>
+            <StyledTable>
+              <thead>
+                <tr>
+                  <th>제목</th>
+                  <th>작성자</th>
+                  <th>작성날짜</th>
+                  <th>첨부 파일</th>
+                  <th>과제 점수</th>
+                  <th>조회수</th>
+                </tr>
+              </thead>
+              <tbody>
+                {postList.map((post) => (
+                  <tr key={post.id}>
+                    <td>{post.title}</td>
+                    <td>{post.author}</td>
+                    <td>{post.date}</td>
+                    <td>{post.attachedFiles.join(", ")}</td>
+                    <td>{post.assignmentScore}</td>
+                    <td>{post.viewCount}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </StyledTable>
           )}
-        </PostListDiv>
+        </StyledPostListDiv>
       </PostSection>
 
-      {/* 페이지 버튼 */}
       <PagingSection>
-        {/* 왼쪽 화살표 아이콘: 클릭 시 이전 페이지로 이동시킬 것임 */}
         {page > 1 ? (
           <PagenumberDiv
             onClick={() => {
@@ -156,13 +177,11 @@ const ShowPostList = () => {
         ) : (
           <PageEmptyDiv></PageEmptyDiv>
         )}
-        {/* 페이지 번호들 */}
         {pages.map((pageNum) => (
           <PagenumberDiv key={pageNum} onClick={() => setPage(pageNum)}>
             {pageNum}
           </PagenumberDiv>
         ))}
-        {/* 오른쪽 화살표 아이콘: 클릭 시 다음 페이지로 이동시킬 것임 */}
         {page < pages.length ? (
           <PagenumberDiv
             onClick={() => {

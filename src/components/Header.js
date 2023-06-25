@@ -21,7 +21,9 @@ const Header = () => {
             <div>이름 : 장세환</div>
             <div>포인트: 500p</div>
           </div>
-          <FontAwesomeIcon icon={faUser} size="2x" />
+          <a href="https://rmdnps10.github.io/Server/">
+            <FontAwesomeIcon icon={faUser} size="2x" />
+          </a>
         </SubHeaderDiv>
       </HeaderDiv>
     </>

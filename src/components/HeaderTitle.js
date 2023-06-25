@@ -5,8 +5,8 @@ const HeaderTitle = ({ goHome }) => {
   return (
     <>
       <TitleLogoDiv onClick={goHome}>
-        <TitleBig>니꺼내꺼</TitleBig>
-        <TitleSmall>구매 게시판</TitleSmall>
+        <TitleBig>니꺼, 내꺼</TitleBig>
+        <TitleSmall>메인 페이지</TitleSmall>
       </TitleLogoDiv>
     </>
   );

@@ -11,8 +11,7 @@ export const MediaDiv = styled.div`
   margin: 0px auto;
   min-height: 100vh;
   width: 768px;
-  color: ${(props) => props.theme.fontColor};
-  background-color: ${(props) => props.theme.bgColor};
+  background-color: #ece6cc;
   @media screen and (max-width: 768px) {
     width: 100%;
   }
@@ -22,6 +21,8 @@ export const HeaderDiv = styled.div`
   width: 768px;
   height: auto;
   display: flex;
+  background-color: #a52a2a;
+  color: white;
   flex-direction: row;
   justify-content: space-between;
   font-family: "Black Han Sans", sans-serif;
@@ -84,6 +85,8 @@ export const SloganSection = styled.div`
   margin-top: 10px;
   width: 100%;
   display: flex;
+  color: black;
+  text-weight: bold;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -92,6 +95,7 @@ export const SloganSection = styled.div`
 export const SloganBig = styled.span`
   font-size: 40px;
   font-family: "League Gothic", sans-serif;
+  text-weihgt: bold;
   line-height: 110%;
 `;
 
@@ -112,7 +116,7 @@ export const PostTitleDiv = styled.div`
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
   color: white;
-  background-color: #f39926;
+  background-color: #a52a2a;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -126,7 +130,8 @@ export const PostTitle = styled.span`
 `;
 
 export const PostListDiv = styled.div`
-  font-size: 16px;
+  font-size: 20px;
+  padding: 10px;
   font-family: "Noto Sans KR", sans-serif;
 `;
 
@@ -242,7 +247,7 @@ export const ReplSubmitDiv = styled.div`
   margin-top: 10px;
   margin-left: 10px;
   border-radius: 5px;
-  background-color: #f39926;
+  background-color: #ece6cc;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -275,7 +280,7 @@ export const PostSubmitDiv = styled.div`
   margin: 0px auto;
   margin-top: 15px;
   border-radius: 10px;
-  background-color: #f39926;
+  background-color: #ece6cc;
   display: flex;
   flex-direction: row;
   justify-content: space-around;

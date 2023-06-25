@@ -22,30 +22,28 @@ const App = () => {
 
   return (
     <>
-      <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
-        {/* Global Styling */}
-        <GlobalStyles />
-        <MediaDiv>
-          {/* Header */}
-          <Header darkMode={darkMode} setDarkMode={setDarkMode} />
-          <Main>
-            {/* Slogan */}
-            <Slogan />
+      {/* Global Styling */}
+      <GlobalStyles />
+      <MediaDiv>
+        {/* Header */}
+        <Header darkMode={darkMode} setDarkMode={setDarkMode} />
+        <Main>
+          {/* Slogan */}
+          <Slogan />
 
-            <Temp />
-            {/* Routes */}
-            <Routes>
-              <Route path="/main" element={<MainView />} />
-              <Route path="/post" element={<ShowPostList />} />
-              <Route path="/write" element={<WritePost />} />
-              <Route path="/post/:postID" element={<ShowPost />} />
-              <Route path="/course/:subject" element={<CourseRedirect />} />
-            </Routes>
-          </Main>
-        </MediaDiv>
-        {/* Footer */}
-        <Footer />
-      </ThemeProvider>
+          <Temp />
+          {/* Routes */}
+          <Routes>
+            <Route path="/main" element={<MainView />} />
+            <Route path="/post" element={<ShowPostList />} />
+            <Route path="/write" element={<WritePost />} />
+            <Route path="/post/:postID" element={<ShowPost />} />
+            <Route path="/course/:subject" element={<CourseRedirect />} />
+          </Routes>
+        </Main>
+      </MediaDiv>
+      {/* Footer */}
+      <Footer />
     </>
   );
 };
