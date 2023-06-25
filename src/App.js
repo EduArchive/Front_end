@@ -13,6 +13,8 @@ import ShowPostList from "./components/ShowPostList";
 import ShowPost from "./components/ShowPost";
 import WritePost from "./components/WritePost";
 
+import MainView from "./components/MainView";
+
 export const APIURL = process.env.REACT_APP_APIURL;
 
 const App = () => {
@@ -33,6 +35,7 @@ const App = () => {
             <Temp />
             {/* Routes */}
             <Routes>
+              <Route path="/main" element={<MainView />} />
               <Route path="/" element={<ShowPostList />} />
               <Route path="/write" element={<WritePost />} />
               <Route path="/post/:postID" element={<ShowPost />} />

@@ -118,7 +118,7 @@ const ShowPostList = () => {
         <PostTitleDiv>
           <FontAwesomeIcon icon={faArrowsRotate} />
 
-          <PostTitle>익명게시판</PostTitle>
+          <PostTitle>구매게시판</PostTitle>
 
           <CursorDiv>
             <FontAwesomeIcon onClick={goWrite} icon={faPenToSquare} />

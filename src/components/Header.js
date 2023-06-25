@@ -12,14 +12,19 @@ const Header = ({ darkMode, setDarkMode }) => {
 
   const navigate = useNavigate();
   const goHome = () => {
-    navigate("/");
+    navigate("/main");
   };
 
   return (
     <>
       <HeaderDiv>
         <HeaderTitle goHome={goHome} />
+
         <SubHeaderDiv>
+          <div>
+            <div>이름 : 장세환</div>
+            <div>포인트: 500p</div>
+          </div>
           {darkMode ? (
             <FontAwesomeIcon icon={faSun} onClick={toggleDarkMode} />
           ) : (
