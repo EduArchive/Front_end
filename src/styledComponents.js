@@ -1,5 +1,12 @@
 import styled from "styled-components";
 
+export const MainContainer = styled.div`
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-family: "Black Han Sans", sans-serif;
+  font-size: 20px;
+`;
+
 export const MediaDiv = styled.div`
   margin: 0px auto;
   min-height: 100vh;
@@ -19,6 +26,13 @@ export const HeaderDiv = styled.div`
   justify-content: space-between;
   font-family: "Black Han Sans", sans-serif;
   position: absolute;
+  a {
+    color: inherit;
+    text-decoration: none;
+    &:hover {
+      text-decoration: none;
+    }
+  }
   @media screen and (max-width: 768px) {
     width: 100%;
   }
@@ -42,12 +56,24 @@ export const TitleSmall = styled.span`
   font-size: 20px;
 `;
 
+export const ApplicationDiv = styled.div`
+  font-size: 20 px;
+  text-align: center;
+  margin: 5px auto;
+  line-height: 130%;
+`;
+
 export const SubHeaderDiv = styled.div`
   margin: 15px;
   font-size: 25px;
   display: flex;
   flex-direction: row;
   cursor: pointer;
+  line-height: 130%;
+  justify-content: space-between;
+  div {
+    padding-right: 10px;
+  }
 `;
 
 export const Main = styled.div`
@@ -66,9 +92,11 @@ export const SloganSection = styled.div`
 export const SloganBig = styled.span`
   font-size: 40px;
   font-family: "League Gothic", sans-serif;
+  line-height: 110%;
 `;
 
 export const SloganSmall = styled.span`
+  font-size: 25px;
   margin: 3px;
   font-weight: bold;
   color: #f39926;
@@ -259,4 +287,14 @@ export const PostSubmit = styled.div`
   margin-bottom: 5px;
   font-family: "Black Han Sans", sans-serif;
   font-size: 20px;
+`;
+
+export const MainContent = styled.div`
+  margin: 15px;
+  font-size: 23px;
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+  line-height: 130%;
+  justify-content: space-between;
 `;

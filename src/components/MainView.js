@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { HeaderDiv, SubHeaderDiv, TitleSmall, ApplicationDiv } from "../styledComponents";
+import { HeaderDiv, MainContent, TitleSmall, ApplicationDiv } from "../styledComponents";
+import { Link } from "react-router-dom";
 
 const HeaderTitle = ({ goHome }) => {
-  const [college, setCollege] = useState(null); // 선택한 학부를 저장하는 상태 변수입니다.
-  const [department, setDepartment] = useState(null); // 선택한 학과를 저장하는 상태 변수입니다.
-  const [grade, setGrade] = useState(null); // 선택한 학년을 저장하는 상태 변수입니다.
+  const [college, setCollege] = useState(null); // 선택한 학부를 저장하는 상태 변수
+  const [department, setDepartment] = useState(null); // 선택한 학과를 저장하는 상태 변수
+  const [grade, setGrade] = useState(null); // 선택한 학년을 저장하는 상태 변수
+
   const colleges = [
     {
       name: "공대",
@@ -12,7 +14,7 @@ const HeaderTitle = ({ goHome }) => {
     },
     {
       name: "자연대",
-      departments: ["수학과", "물리학과", "화학과", "지구환경과학과"],
+      departments: ["수학과", "물리학과", "화학과", "생명과학과"],
     },
     {
       name: "사과대",
@@ -72,8 +74,8 @@ const HeaderTitle = ({ goHome }) => {
       </ApplicationDiv>
 
       <HeaderDiv>
-        <SubHeaderDiv style={{ padding: "0 30px" }}>
-          <div style={{ marginTop: "40px" }}>
+        <MainContent style={{ padding: "0 30px" }}>
+          <div style={{ marginTop: "20px" }}>
             {colleges.map((college, index) => (
               <div key={index} onClick={() => handleCollegeSelect(college.name)}>
                 {college.name}
@@ -81,7 +83,7 @@ const HeaderTitle = ({ goHome }) => {
             ))}
           </div>
           {college && (
-            <div style={{ marginTop: "40px", padding: "0 30px" }}>
+            <div style={{ marginTop: "20px", padding: "0 30px" }}>
               {colleges
                 .find((col) => col.name === college)
                 .departments.map((dept, index) => (
@@ -92,7 +94,7 @@ const HeaderTitle = ({ goHome }) => {
             </div>
           )}
           {department && (
-            <div style={{ marginTop: "40px" }}>
+            <div style={{ marginTop: "20px" }}>
               {grades.map((grade, index) => (
                 <div key={index} onClick={() => handleGradeSelect(grade)}>
                   {grade}
@@ -101,66 +103,95 @@ const HeaderTitle = ({ goHome }) => {
             </div>
           )}
           {grade && (
-            <div style={{ marginTop: "40px", padding: "0 30px" }}>
+            <div style={{ marginTop: "20px", padding: "0 30px" }}>
               {/* 해당 학년에 따른 과목 목록을 표시합니다. */}
               {/* 원하는 형식으로 과목 목록을 구성하세요. */}
               {department === "컴퓨터공학과" && grade === "1학년" && (
                 <>
-                  <div>기인프</div>
-                  <div>자연계 글쓰기</div>
-                  <div>미적분학1</div>
-                  <div>미적분학2</div>
-                  <div>일반물리1</div>
-                  <div>일반물리실험1</div>
-                  <div>이산구조</div>
-                  <div>컴퓨터프로그래밍1</div>
-                  <div>컴퓨터프로그래밍2</div>
+                  <Link to="/course/기인프">기인프</Link>
+                  <div></div>
+                  <Link to="/course/자연계 글쓰기">자연계 글쓰기</Link>
+                  <div></div>
+                  <Link to="/course/미적분학1">미적분학1</Link>
+                  <div></div>
+                  <Link to="/course/미적분학2">미적분학2</Link>
+                  <div></div>
+                  <Link to="/course/일반물리1">일반물리1</Link>
+                  <div></div>
+                  <Link to="/course/일반물리실험1">일반물리실험1</Link>
+                  <div></div>
+                  <Link to="/course/이산구조">이산구조</Link>
+                  <div></div>
+                  <Link to="/course/컴퓨터프로그래밍1">컴퓨터프로그래밍1</Link>
+                  <div></div>
+                  <Link to="/course/컴퓨터프로그래밍2">컴퓨터프로그래밍2</Link>
+                  <div></div>
                 </>
               )}
               {department === "컴퓨터공학과" && grade === "2학년" && (
                 <>
-                  <div>응용수학1</div>
-                  <div>응용수학2</div>
-                  <div>컴퓨터공학설계및실험1</div>
-                  <div>컴퓨터공학설계및실험2</div>
-                  <div>자료구조</div>
-                  <div>알고리즘설계와분석</div>
-                  <div>컴퓨터시스템개론</div>
-                  <div>JAVA언어</div>
-                  <div>디지털회로개론</div>
+                  <Link to="/course/응용수학1">응용수학1</Link>
+                  <div></div>
+                  <Link to="/course/응용수학2">응용수학2</Link>
+                  <div></div>
+                  <Link to="/course/컴퓨터공학설계및실험1">컴퓨터공학설계및실험1</Link>
+                  <div></div>
+                  <Link to="/course/컴퓨터공학설계및실험2">컴퓨터공학설계및실험2</Link>
+                  <div></div>
+                  <Link to="/course/자료구조">자료구조</Link>
+                  <div></div>
+                  <Link to="/course/알고리즘설계와분석">알고리즘설계와분석</Link>
+                  <div></div>
+                  <Link to="/course/컴퓨터시스템개론">컴퓨터시스템개론</Link>
+                  <div></div>
+                  <Link to="/course/JAVA언어">JAVA언어</Link>
+                  <div></div>
+                  <Link to="/course/디지털회로개론">디지털회로개론</Link>
+                  <div></div>
                 </>
               )}
               {department === "컴퓨터공학과" && grade === "3학년" && (
                 <>
-                  <div>집합론</div>
-                  <div>선형대수학</div>
-                  <div>정수론</div>
-                  <div>프로그래밍언어</div>
-                  <div>컴퓨터아키텍쳐</div>
-                  <div>지능형 통신 시스템</div>
-                  <div>운영체제</div>
-                  <div>자동장치이론</div>
-                  <div>멀티코어프로그래밍</div>
-                  <div>임베디드시스템개론</div>
-                  <div>파일처리</div>
-                  <div>기초머신러닝</div>
-                  <div>고급소프트웨어실습1</div>
-                  <div>기초컴퓨터그래픽스</div>
+                  <Link to="/course/집합론">집합론</Link>
+                  <div></div>
+
+                  <Link to="/course/프로그래밍언어">프로그래밍언어</Link>
+                  <div></div>
+                  <Link to="/course/컴퓨터아키텍쳐">컴퓨터아키텍쳐</Link>
+                  <div></div>
+                  <Link to="/course/운영체제">운영체제</Link>
+                  <div></div>
+                  <Link to="/course/멀티코어프로그래밍">멀티코어프로그래밍</Link>
+                  <div></div>
+                  <Link to="/course/임베디드시스템개론">임베디드시스템개론</Link>
+                  <div></div>
+                  <Link to="/course/기초머신러닝">기초머신러닝</Link>
+                  <div></div>
+                  <Link to="/course/고급소프트웨어실습1">고급소프트웨어실습1</Link>
+                  <div></div>
+                  <Link to="/course/기초딥러닝">기초딥러닝</Link>
+                  <div></div>
                 </>
               )}
               {department === "컴퓨터공학과" && grade === "4학년" && (
                 <>
-                  <div>기초컴파일러구성</div>
-                  <div>임베디드컴퓨터구조</div>
-                  <div>컴퓨터네트워크</div>
-                  <div>데이터베이스시스템</div>
-                  <div>기초인공지능</div>
-                  <div>기초딥러닝</div>
+                  <Link to="/course/기초컴파일러구성">기초컴파일러구성</Link>
+                  <div></div>
+                  <Link to="/course/임베디드컴퓨터구조">임베디드컴퓨터구조</Link>
+                  <div></div>
+                  <Link to="/course/컴퓨터네트워크">컴퓨터네트워크</Link>
+                  <div></div>
+                  <Link to="/course/데이터베이스시스템">데이터베이스시스템</Link>
+                  <div></div>
+                  <Link to="/course/기초인공지능">기초인공지능</Link>
+                  <div></div>
+                  <Link to="/course/기초딥러닝">기초딥러닝</Link>
+                  <div></div>
                 </>
               )}
             </div>
           )}
-        </SubHeaderDiv>
+        </MainContent>
       </HeaderDiv>
     </>
   );

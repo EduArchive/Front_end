@@ -6,8 +6,8 @@ const Footer = () => {
   return (
     <FooterDiv>
       <FontAwesomeIcon icon={faReact} />
-      <FooterBig>for react study</FooterBig>
-      <FooterSmall>2023. by 여러분의 이름~ </FooterSmall>
+      <FooterBig>복커톤</FooterBig>
+      <FooterSmall>2023. by 멋사 1조 </FooterSmall>
     </FooterDiv>
   );
 };

@@ -5,7 +5,7 @@ import Header from "./components/Header";
 import Slogan from "./components/Slogan";
 import { Main, MediaDiv } from "./styledComponents";
 import { darkTheme, GlobalStyles, lightTheme } from "./styles";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate, Link } from "react-router-dom";
 import styled from "styled-components";
 
 import Temp from "./Temp";
@@ -36,9 +36,10 @@ const App = () => {
             {/* Routes */}
             <Routes>
               <Route path="/main" element={<MainView />} />
-              <Route path="/" element={<ShowPostList />} />
+              <Route path="/post" element={<ShowPostList />} />
               <Route path="/write" element={<WritePost />} />
               <Route path="/post/:postID" element={<ShowPost />} />
+              <Route path="/course/:subject" element={<CourseRedirect />} />
             </Routes>
           </Main>
         </MediaDiv>
@@ -47,6 +48,11 @@ const App = () => {
       </ThemeProvider>
     </>
   );
+};
+
+const CourseRedirect = ({ subject }) => {
+  // '/course/:subject' 경로로 이동할 때 동작하는 컴포넌트입니다
+  return <Navigate to="/post" />;
 };
 
 export default App;

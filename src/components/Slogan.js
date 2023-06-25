@@ -4,8 +4,8 @@ import { SloganSection, SloganBig, SloganSmall } from "../styledComponents";
 const Slogun = () => {
   return (
     <SloganSection>
-      <SloganBig>HACK YOUR LIFE</SloganBig>
-      <SloganSmall>내 아이디어를 내 손으로 실현한다.</SloganSmall>
+      <SloganBig>I WANT YOUR ASSIGNMENT</SloganBig>
+      <SloganSmall>니 과제 얼마면 돼</SloganSmall>
     </SloganSection>
   );
 };
